@@ -1,0 +1,104 @@
+{
+  "name": "pure-humanize",
+  "version": "0.1.0",
+  "description": "Zero-dependency, cross-runtime micro-library for human-readable data formatting via native Intl APIs",
+  "type": "module",
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs",
+      "default": "./dist/index.js"
+    },
+    "./timeAgo": {
+      "types": "./dist/timeAgo.d.ts",
+      "import": "./dist/timeAgo.js",
+      "require": "./dist/timeAgo.cjs",
+      "default": "./dist/timeAgo.js"
+    },
+    "./bytes": {
+      "types": "./dist/bytes.d.ts",
+      "import": "./dist/bytes.js",
+      "require": "./dist/bytes.cjs",
+      "default": "./dist/bytes.js"
+    },
+    "./number": {
+      "types": "./dist/number.d.ts",
+      "import": "./dist/number.js",
+      "require": "./dist/number.cjs",
+      "default": "./dist/number.js"
+    },
+    "./currency": {
+      "types": "./dist/currency.d.ts",
+      "import": "./dist/currency.js",
+      "require": "./dist/currency.cjs",
+      "default": "./dist/currency.js"
+    },
+    "./list": {
+      "types": "./dist/list.d.ts",
+      "import": "./dist/list.js",
+      "require": "./dist/list.cjs",
+      "default": "./dist/list.js"
+    },
+    "./plural": {
+      "types": "./dist/plural.d.ts",
+      "import": "./dist/plural.js",
+      "require": "./dist/plural.cjs",
+      "default": "./dist/plural.js"
+    },
+    "./ordinal": {
+      "types": "./dist/ordinal.d.ts",
+      "import": "./dist/ordinal.js",
+      "require": "./dist/ordinal.cjs",
+      "default": "./dist/ordinal.js"
+    },
+    "./truncate": {
+      "types": "./dist/truncate.d.ts",
+      "import": "./dist/truncate.js",
+      "require": "./dist/truncate.cjs",
+      "default": "./dist/truncate.js"
+    }
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit",
+    "size": "size-limit",
+    "prepublishOnly": "npm run build && npm run size"
+  },
+  "size-limit": [
+    {
+      "path": "dist/index.js",
+      "limit": "2 KB"
+    }
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "license": "MIT",
+  "keywords": [
+    "humanize",
+    "format",
+    "intl",
+    "bytes",
+    "timeago",
+    "currency",
+    "i18n",
+    "zero-dependency"
+  ],
+  "devDependencies": {
+    "@size-limit/preset-small-lib": "^11",
+    "size-limit": "^11",
+    "tsup": "^8",
+    "typescript": "^5.5",
+    "vitest": "^2"
+  }
+}
