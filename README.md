@@ -1,6 +1,5 @@
 [![npm version](https://img.shields.io/npm/v/pure-humanize.svg)](https://www.npmjs.com/package/pure-humanize)
 [![CI](https://img.shields.io/github/actions/workflow/status/biggora/pure-humanize/ci.yml?branch=master)](https://github.com/biggora/pure-humanize/actions)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 # pure-humanize
 
