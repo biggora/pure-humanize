@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>pure-humanize — Zero-dependency formatting library for human-readable data</title>
+  <meta name="description" content="A 1.2 KB zero-dependency TypeScript micro-library for formatting dates, bytes, numbers, currencies, lists, plurals, ordinals and strings using native Intl APIs. Cross-runtime: Node.js, Deno, Bun, browsers.">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="pure-humanize — Human-readable data formatting in 1.2 KB">
+  <meta property="og:description" content="Zero-dependency TypeScript micro-library using native Intl APIs. Format dates, bytes, numbers, currencies, lists, and more.">
+  <meta property="og:url" content="https://niceandfun.github.io/pure-humanize/">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="pure-humanize">
+  <meta name="twitter:description" content="Format dates, bytes, numbers & more in 1.2 KB. Zero dependencies. Native Intl.">
+
+  <link rel="canonical" href="https://niceandfun.github.io/pure-humanize/">
+
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareSourceCode",
+    "name": "pure-humanize",
+    "description": "Zero-dependency, cross-runtime TypeScript micro-library for human-readable data formatting via native Intl APIs",
+    "programmingLanguage": "TypeScript",
+    "runtimePlatform": "Node.js, Deno, Bun, Browser",
+    "license": "https://opensource.org/licenses/MIT",
+    "codeRepository": "https://github.com/niceandfun/pure-humanize"
+  }
+  </script>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ===== HERO ===== -->
+  <header id="hero">
+    <div class="container">
+      <h1>pure-humanize</h1>
+      <p class="tagline">Zero-dependency micro-library for human-readable data formatting.<br>Powered by native <code>Intl</code> APIs.</p>
+      <div class="badges">
+        <span class="badge badge-size">1.2 KB</span>
+        <span class="badge badge-deps">zero deps</span>
+        <span class="badge badge-ts">TypeScript</span>
+        <span class="badge badge-license">MIT</span>
+      </div>
+      <div class="install-cmd">
+        <code id="install-text">npm install pure-humanize</code>
+        <button id="copy-install" class="copy-btn" aria-label="Copy install command">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+        </button>
+      </div>
+      <div class="hero-links">
+        <a href="https://github.com/niceandfun/pure-humanize" class="hero-link">GitHub</a>
+        <a href="https://www.npmjs.com/package/pure-humanize" class="hero-link">npm</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ===== FEATURES ===== -->
+    <section id="features" aria-labelledby="features-heading">
+      <div class="container">
+        <h2 id="features-heading" class="section-title">Why pure-humanize?</h2>
+        <div class="features-grid">
+
+          <article class="feature-card">
+            <div class="feature-icon" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/>
+                <line x1="2" y1="12" x2="22" y2="12"/>
+                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+              </svg>
+            </div>
+            <h3>Intl-native</h3>
+            <p>Delegates all locale logic to the runtime's built-in <code>Intl</code> APIs. No bundled translations.</p>
+          </article>
+
+          <article class="feature-card">
+            <div class="feature-icon" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+              </svg>
+            </div>
+            <h3>Zero Dependencies</h3>
+            <p>Nothing to audit, nothing to update. Pure utility functions only.</p>
+          </article>
+
+          <article class="feature-card">
+            <div class="feature-icon" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="6" cy="6" r="3"/>
+                <circle cx="6" cy="18" r="3"/>
+                <line x1="20" y1="4" x2="8.12" y2="15.88"/>
+                <line x1="14.47" y1="14.48" x2="20" y2="20"/>
+                <line x1="8.12" y1="8.12" x2="12" y2="12"/>
+              </svg>
+            </div>
+            <h3>Tree-shakeable</h3>
+            <p>ESM-first with <code>sideEffects: false</code>. Import only what you use.</p>
+          </article>
+
+          <article class="feature-card">
+            <div class="feature-icon" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="12 2 2 7 12 12 22 7 12 2"/>
+                <polyline points="2 17 12 22 22 17"/>
+                <polyline points="2 12 12 17 22 12"/>
+              </svg>
+            </div>
+            <h3>Cross-runtime</h3>
+            <p>Works in Node.js 18+, Deno, Bun, and all modern browsers.</p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== PLAYGROUND ===== -->
+    <section id="playground" aria-labelledby="playground-heading">
+      <div class="container">
+        <h2 id="playground-heading" class="section-title">Interactive Playground</h2>
+
+        <div class="playground-header">
+          <div class="locale-selector">
+            <label for="global-locale">Locale</label>
+            <select id="global-locale">
+              <option value="">Browser default</option>
+              <option value="en-US" selected>en-US</option>
+              <option value="de-DE">de-DE</option>
+              <option value="fr-FR">fr-FR</option>
+              <option value="ja-JP">ja-JP</option>
+              <option value="zh-CN">zh-CN</option>
+              <option value="ar-SA">ar-SA</option>
+              <option value="pt-BR">pt-BR</option>
+              <option value="ru-RU">ru-RU</option>
+            </select>
+          </div>
+
+          <nav class="tab-nav" role="tablist" aria-label="Module selection">
+            <button class="tab-btn active" role="tab" aria-selected="true" aria-controls="panel-timeAgo" data-panel="timeAgo">timeAgo</button>
+            <button class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-bytes" data-panel="bytes">bytes</button>
+            <button class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-number" data-panel="number">number</button>
+            <button class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-currency" data-panel="currency">currency</button>
+            <button class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-list" data-panel="list">list</button>
+            <button class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-plural" data-panel="plural">plural</button>
+            <button class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-ordinal" data-panel="ordinal">ordinal</button>
+            <button class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-truncate" data-panel="truncate">truncate</button>
+          </nav>
+        </div>
+
+        <!-- Panel: timeAgo -->
+        <div id="panel-timeAgo" class="playground-panel active" role="tabpanel" aria-labelledby="tab-timeAgo">
+          <div class="panel-desc">
+            <p>Formats a date into a human-readable relative time string using <code>Intl.RelativeTimeFormat</code>.</p>
+          </div>
+          <div class="panel-controls">
+            <div class="control-group">
+              <label for="timeago-offset">Time offset</label>
+              <input type="range" id="timeago-offset" min="-525600" max="43200" value="-5" step="1">
+              <span id="timeago-offset-label" class="range-label">5 minutes ago</span>
+            </div>
+            <div class="control-group">
+              <label>Style</label>
+              <div class="radio-group" role="group" aria-label="Style">
+                <label><input type="radio" name="timeago-style" value="long" checked> long</label>
+                <label><input type="radio" name="timeago-style" value="short"> short</label>
+                <label><input type="radio" name="timeago-style" value="narrow"> narrow</label>
+              </div>
+            </div>
+            <div class="control-group">
+              <label>Numeric</label>
+              <div class="radio-group" role="group" aria-label="Numeric">
+                <label><input type="radio" name="timeago-numeric" value="auto" checked> auto</label>
+                <label><input type="radio" name="timeago-numeric" value="always"> always</label>
+              </div>
+            </div>
+          </div>
+          <div class="panel-result">
+            <div class="output-box">
+              <span class="output-label">Output</span>
+              <output id="output-timeAgo" class="output-value" aria-live="polite"></output>
+            </div>
+            <div class="code-box">
+              <div class="code-header">
+                <span>Code</span>
+                <button class="copy-btn copy-code" data-target="code-timeAgo" aria-label="Copy code snippet">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                </button>
+              </div>
+              <pre><code id="code-timeAgo"></code></pre>
+            </div>
+          </div>
+        </div>
+
+        <!-- Panel: bytes -->
+        <div id="panel-bytes" class="playground-panel" role="tabpanel" aria-labelledby="tab-bytes">
+          <div class="panel-desc">
+            <p>Formats a byte count into a human-readable string using binary (KiB) or SI (kB) units.</p>
+          </div>
+          <div class="panel-controls">
+            <div class="control-group">
+              <label for="bytes-value">Value (bytes)</label>
+              <input type="number" id="bytes-value" value="1536" min="0" step="1">
+            </div>
+            <div class="control-group">
+              <label class="checkbox-label">
+                <input type="checkbox" id="bytes-binary" checked>
+                Binary units (KiB / MiB)
+              </label>
+            </div>
+            <div class="control-group">
+              <label for="bytes-fraction">Maximum fraction digits</label>
+              <input type="number" id="bytes-fraction" value="1" min="0" max="4" step="1">
+            </div>
+          </div>
+          <div class="panel-result">
+            <div class="output-box">
+              <span class="output-label">Output</span>
+              <output id="output-bytes" class="output-value" aria-live="polite"></output>
+            </div>
+            <div class="code-box">
+              <div class="code-header">
+                <span>Code</span>
+                <button class="copy-btn copy-code" data-target="code-bytes" aria-label="Copy code snippet">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                </button>
+              </div>
+              <pre><code id="code-bytes"></code></pre>
+            </div>
+          </div>
+        </div>
+
+        <!-- Panel: number -->
+        <div id="panel-number" class="playground-panel" role="tabpanel" aria-labelledby="tab-number">
+          <div class="panel-desc">
+            <p>Formats a number using compact notation via <code>Intl.NumberFormat</code>.</p>
+          </div>
+          <div class="panel-controls">
+            <div class="control-group">
+              <label for="number-value">Value</label>
+              <input type="number" id="number-value" value="1234567" step="1">
+            </div>
+            <div class="control-group">
+              <label>Compact display</label>
+              <div class="radio-group" role="group" aria-label="Compact display">
+                <label><input type="radio" name="number-compact" value="short" checked> short</label>
+                <label><input type="radio" name="number-compact" value="long"> long</label>
+              </div>
+            </div>
+          </div>
+          <div class="panel-result">
+            <div class="output-box">
+              <span class="output-label">Output</span>
+              <output id="output-number" class="output-value" aria-live="polite"></output>
+            </div>
+            <div class="code-box">
+              <div class="code-header">
+                <span>Code</span>
+                <button class="copy-btn copy-code" data-target="code-number" aria-label="Copy code snippet">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                </button>
+              </div>
+              <pre><code id="code-number"></code></pre>
+            </div>
+          </div>
+        </div>
+
+        <!-- Panel: currency -->
+        <div id="panel-currency" class="playground-panel" role="tabpanel" aria-labelledby="tab-currency">
+          <div class="panel-desc">
+            <p>Formats a number as a currency string using <code>Intl.NumberFormat</code> with <code>style: 'currency'</code>.</p>
+          </div>
+          <div class="panel-controls">
+            <div class="control-group">
+              <label for="currency-value">Amount</label>
+              <input type="number" id="currency-value" value="1234.50" step="0.01">
+            </div>
+            <div class="control-group">
+              <label for="currency-code">Currency</label>
+              <select id="currency-code">
+                <option value="USD" selected>USD</option>
+                <option value="EUR">EUR</option>
+                <option value="GBP">GBP</option>
+                <option value="JPY">JPY</option>
+                <option value="CNY">CNY</option>
+                <option value="RUB">RUB</option>
+                <option value="BRL">BRL</option>
+                <option value="INR">INR</option>
+                <option value="KRW">KRW</option>
+              </select>
+            </div>
+            <div class="control-group">
+              <label>Currency display</label>
+              <div class="radio-group" role="group" aria-label="Currency display">
+                <label><input type="radio" name="currency-display" value="symbol" checked> symbol</label>
+                <label><input type="radio" name="currency-display" value="narrowSymbol"> narrowSymbol</label>
+                <label><input type="radio" name="currency-display" value="code"> code</label>
+                <label><input type="radio" name="currency-display" value="name"> name</label>
+              </div>
+            </div>
+            <div class="control-group">
+              <label class="checkbox-label">
+                <input type="checkbox" id="currency-compact">
+                Compact notation
+              </label>
+            </div>
+          </div>
+          <div class="panel-result">
+            <div class="output-box">
+              <span class="output-label">Output</span>
+              <output id="output-currency" class="output-value" aria-live="polite"></output>
+            </div>
+            <div class="code-box">
+              <div class="code-header">
+                <span>Code</span>
+                <button class="copy-btn copy-code" data-target="code-currency" aria-label="Copy code snippet">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                </button>
+              </div>
+              <pre><code id="code-currency"></code></pre>
+            </div>
+          </div>
+        </div>
+
+        <!-- Panel: list -->
+        <div id="panel-list" class="playground-panel" role="tabpanel" aria-labelledby="tab-list">
+          <div class="panel-desc">
+            <p>Formats a list of items into a human-readable string using <code>Intl.ListFormat</code>.</p>
+          </div>
+          <div class="panel-controls">
+            <div class="control-group">
+              <label for="list-items">Items (one per line)</label>
+              <textarea id="list-items" rows="3">Alice
+Bob
+Charlie</textarea>
+            </div>
+            <div class="control-group">
+              <label>Type</label>
+              <div class="radio-group" role="group" aria-label="Type">
+                <label><input type="radio" name="list-type" value="conjunction" checked> conjunction</label>
+                <label><input type="radio" name="list-type" value="disjunction"> disjunction</label>
+                <label><input type="radio" name="list-type" value="unit"> unit</label>
+              </div>
+            </div>
+            <div class="control-group">
+              <label>Style</label>
+              <div class="radio-group" role="group" aria-label="Style">
+                <label><input type="radio" name="list-style" value="long" checked> long</label>
+                <label><input type="radio" name="list-style" value="short"> short</label>
+                <label><input type="radio" name="list-style" value="narrow"> narrow</label>
+              </div>
+            </div>
+          </div>
+          <div class="panel-result">
+            <div class="output-box">
+              <span class="output-label">Output</span>
+              <output id="output-list" class="output-value" aria-live="polite"></output>
+            </div>
+            <div class="code-box">
+              <div class="code-header">
+                <span>Code</span>
+                <button class="copy-btn copy-code" data-target="code-list" aria-label="Copy code snippet">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                </button>
+              </div>
+              <pre><code id="code-list"></code></pre>
+            </div>
+          </div>
+        </div>
+
+        <!-- Panel: plural -->
+        <div id="panel-plural" class="playground-panel" role="tabpanel" aria-labelledby="tab-plural">
+          <div class="panel-desc">
+            <p>Selects the correct plural form for a count using <code>Intl.PluralRules</code>. Use <code>#</code> as a placeholder for the formatted number.</p>
+          </div>
+          <div class="panel-controls">
+            <div class="control-group">
+              <label for="plural-count">Count</label>
+              <input type="number" id="plural-count" value="5" step="1">
+            </div>
+            <div class="control-group">
+              <label for="plural-one">Singular template (one)</label>
+              <input type="text" id="plural-one" value="# item">
+            </div>
+            <div class="control-group">
+              <label for="plural-other">Plural template (other)</label>
+              <input type="text" id="plural-other" value="# items">
+            </div>
+          </div>
+          <div class="panel-result">
+            <div class="output-box">
+              <span class="output-label">Output</span>
+              <output id="output-plural" class="output-value" aria-live="polite"></output>
+            </div>
+            <div class="code-box">
+              <div class="code-header">
+                <span>Code</span>
+                <button class="copy-btn copy-code" data-target="code-plural" aria-label="Copy code snippet">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                </button>
+              </div>
+              <pre><code id="code-plural"></code></pre>
+            </div>
+          </div>
+        </div>
+
+        <!-- Panel: ordinal -->
+        <div id="panel-ordinal" class="playground-panel" role="tabpanel" aria-labelledby="tab-ordinal">
+          <div class="panel-desc">
+            <p>Formats a number as an ordinal string (1st, 2nd, 3rd…) using <code>Intl.PluralRules</code> with <code>type: 'ordinal'</code>.</p>
+          </div>
+          <div class="panel-controls">
+            <div class="control-group">
+              <label for="ordinal-value">Number</label>
+              <input type="number" id="ordinal-value" value="1" min="0" step="1">
+            </div>
+          </div>
+          <div class="panel-result">
+            <div class="output-box">
+              <span class="output-label">Output</span>
+              <output id="output-ordinal" class="output-value" aria-live="polite"></output>
+            </div>
+            <div class="code-box">
+              <div class="code-header">
+                <span>Code</span>
+                <button class="copy-btn copy-code" data-target="code-ordinal" aria-label="Copy code snippet">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                </button>
+              </div>
+              <pre><code id="code-ordinal"></code></pre>
+            </div>
+          </div>
+        </div>
+
+        <!-- Panel: truncate -->
+        <div id="panel-truncate" class="playground-panel" role="tabpanel" aria-labelledby="tab-truncate">
+          <div class="panel-desc">
+            <p>Truncates a string to a maximum length, inserting an ellipsis at the end, middle, or start.</p>
+          </div>
+          <div class="panel-controls">
+            <div class="control-group">
+              <label for="truncate-text">Text</label>
+              <textarea id="truncate-text" rows="2">The quick brown fox jumps over the lazy dog</textarea>
+            </div>
+            <div class="control-group">
+              <label for="truncate-length">Max length: <span id="truncate-length-label">20</span></label>
+              <input type="range" id="truncate-length" min="1" max="50" value="20" step="1">
+            </div>
+            <div class="control-group">
+              <label>Position</label>
+              <div class="radio-group" role="group" aria-label="Position">
+                <label><input type="radio" name="truncate-position" value="end" checked> end</label>
+                <label><input type="radio" name="truncate-position" value="middle"> middle</label>
+                <label><input type="radio" name="truncate-position" value="start"> start</label>
+              </div>
+            </div>
+            <div class="control-group">
+              <label class="checkbox-label">
+                <input type="checkbox" id="truncate-wordboundary">
+                Word boundary (end only)
+              </label>
+            </div>
+            <div class="control-group">
+              <label for="truncate-ellipsis">Ellipsis</label>
+              <input type="text" id="truncate-ellipsis" value="...">
+            </div>
+          </div>
+          <div class="panel-result">
+            <div class="output-box">
+              <span class="output-label">Output</span>
+              <output id="output-truncate" class="output-value" aria-live="polite"></output>
+            </div>
+            <div class="code-box">
+              <div class="code-header">
+                <span>Code</span>
+                <button class="copy-btn copy-code" data-target="code-truncate" aria-label="Copy code snippet">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                </button>
+              </div>
+              <pre><code id="code-truncate"></code></pre>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===== API REFERENCE ===== -->
+    <section id="api" aria-labelledby="api-heading">
+      <div class="container">
+        <h2 id="api-heading" class="section-title">API Reference</h2>
+        <p class="api-intro">Click any function signature to expand its options.</p>
+
+        <div class="api-list">
+
+          <details>
+            <summary><code>timeAgo(date, options?)</code></summary>
+            <div class="details-body">
+              <p>Formats a date into a relative time string.</p>
+              <table>
+                <thead><tr><th>Option</th><th>Type</th><th>Default</th></tr></thead>
+                <tbody>
+                  <tr><td>locale</td><td>string | string[]</td><td>runtime default</td></tr>
+                  <tr><td>style</td><td>'long' | 'short' | 'narrow'</td><td>'long'</td></tr>
+                  <tr><td>numeric</td><td>'always' | 'auto'</td><td>'auto'</td></tr>
+                  <tr><td>now</td><td>Date | number</td><td>Date.now()</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </details>
+
+          <details>
+            <summary><code>bytes(value, options?)</code></summary>
+            <div class="details-body">
+              <p>Formats a byte count into a human-readable string.</p>
+              <table>
+                <thead><tr><th>Option</th><th>Type</th><th>Default</th></tr></thead>
+                <tbody>
+                  <tr><td>locale</td><td>string | string[]</td><td>runtime default</td></tr>
+                  <tr><td>binary</td><td>boolean</td><td>true</td></tr>
+                  <tr><td>maximumFractionDigits</td><td>number</td><td>1</td></tr>
+                  <tr><td>minimumFractionDigits</td><td>number</td><td>0</td></tr>
+                  <tr><td>unitSeparator</td><td>string</td><td>' '</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </details>
+
+          <details>
+            <summary><code>number(value, options?)</code></summary>
+            <div class="details-body">
+              <p>Formats a number using compact notation.</p>
+              <table>
+                <thead><tr><th>Option</th><th>Type</th><th>Default</th></tr></thead>
+                <tbody>
+                  <tr><td>locale</td><td>string | string[]</td><td>runtime default</td></tr>
+                  <tr><td>compactDisplay</td><td>'short' | 'long'</td><td>'short'</td></tr>
+                  <tr><td>maximumFractionDigits</td><td>number</td><td>1</td></tr>
+                  <tr><td>minimumFractionDigits</td><td>number</td><td>0</td></tr>
+                  <tr><td>maximumSignificantDigits</td><td>number</td><td>—</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </details>
+
+          <details>
+            <summary><code>currency(value, currencyCode, options?)</code></summary>
+            <div class="details-body">
+              <p>Formats a number as a currency string.</p>
+              <table>
+                <thead><tr><th>Option</th><th>Type</th><th>Default</th></tr></thead>
+                <tbody>
+                  <tr><td>locale</td><td>string | string[]</td><td>runtime default</td></tr>
+                  <tr><td>currencyDisplay</td><td>'symbol' | 'narrowSymbol' | 'code' | 'name'</td><td>'symbol'</td></tr>
+                  <tr><td>compact</td><td>boolean</td><td>false</td></tr>
+                  <tr><td>maximumFractionDigits</td><td>number</td><td>currency default</td></tr>
+                  <tr><td>minimumFractionDigits</td><td>number</td><td>currency default</td></tr>
+                  <tr><td>trailingZeroDisplay</td><td>'auto' | 'stripIfInteger'</td><td>—</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </details>
+
+          <details>
+            <summary><code>list(items, options?)</code></summary>
+            <div class="details-body">
+              <p>Formats a list of strings into a human-readable sentence.</p>
+              <table>
+                <thead><tr><th>Option</th><th>Type</th><th>Default</th></tr></thead>
+                <tbody>
+                  <tr><td>locale</td><td>string | string[]</td><td>runtime default</td></tr>
+                  <tr><td>type</td><td>'conjunction' | 'disjunction' | 'unit'</td><td>'conjunction'</td></tr>
+                  <tr><td>style</td><td>'long' | 'short' | 'narrow'</td><td>'long'</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </details>
+
+          <details>
+            <summary><code>plural(count, forms, options?)</code></summary>
+            <div class="details-body">
+              <p>Selects the correct plural form. <code>#</code> in templates is replaced by the formatted count.</p>
+              <table>
+                <thead><tr><th>Option</th><th>Type</th><th>Default</th></tr></thead>
+                <tbody>
+                  <tr><td>locale</td><td>string | string[]</td><td>runtime default</td></tr>
+                  <tr><td>type</td><td>'cardinal' | 'ordinal'</td><td>'cardinal'</td></tr>
+                </tbody>
+              </table>
+              <p class="details-note"><strong>forms</strong> keys: <code>zero</code>, <code>one</code>, <code>two</code>, <code>few</code>, <code>many</code>, <code>other</code> (required).</p>
+            </div>
+          </details>
+
+          <details>
+            <summary><code>ordinal(n, options?)</code></summary>
+            <div class="details-body">
+              <p>Formats a number as an ordinal string (1st, 2nd, 3rd…).</p>
+              <table>
+                <thead><tr><th>Option</th><th>Type</th><th>Default</th></tr></thead>
+                <tbody>
+                  <tr><td>locale</td><td>string | string[]</td><td>runtime default</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </details>
+
+          <details>
+            <summary><code>truncate(str, length, options?)</code></summary>
+            <div class="details-body">
+              <p>Truncates a string to a maximum length with an ellipsis.</p>
+              <table>
+                <thead><tr><th>Option</th><th>Type</th><th>Default</th></tr></thead>
+                <tbody>
+                  <tr><td>ellipsis</td><td>string</td><td>'...'</td></tr>
+                  <tr><td>position</td><td>'end' | 'middle' | 'start'</td><td>'end'</td></tr>
+                  <tr><td>wordBoundary</td><td>boolean</td><td>false</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </details>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="container">
+      <nav class="footer-links" aria-label="External links">
+        <a href="https://github.com/niceandfun/pure-humanize">GitHub</a>
+        <a href="https://www.npmjs.com/package/pure-humanize">npm</a>
+        <span>MIT License</span>
+      </nav>
+      <p class="footer-tagline">Built with native Intl APIs. No dependencies. No compromises.</p>
+    </div>
+  </footer>
+
+  <script src="index.global.js"></script>
+  <script src="demo.js"></script>
+</body>
+</html>
