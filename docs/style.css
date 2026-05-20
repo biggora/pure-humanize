@@ -810,11 +810,14 @@ textarea {
   letter-spacing: -0.01em;
 }
 
-.api-list {
+.api-list, .api-intro {
   display: grid;
   gap: var(--space-3);
   max-width: 800px;
   margin: 0 auto;
+}
+.api-intro {
+  padding: var(--space-6) var(--space-4);
 }
 
 details {
