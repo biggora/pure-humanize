@@ -15,7 +15,7 @@ export type TruncateOptions = {
 /**
  * Truncates a string to a maximum length with an ellipsis indicator.
  * @example truncate('Hello, World!', 8) // "Hello..."
- * @example truncate('Hello, World!', 8, { position: 'middle' }) // "He...d!"
+ * @example truncate('Hello, World!', 8, { position: 'middle' }) // "Hel...d!"
  * @example truncate('Hello, World!', 8, { position: 'start' }) // "...orld!"
  * @example truncate('Hello World', 8, { wordBoundary: true }) // "Hello..."
  */
