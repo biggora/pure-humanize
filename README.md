@@ -1,3 +1,7 @@
+[![npm version](https://img.shields.io/npm/v/pure-humanize.svg)](https://www.npmjs.com/package/pure-humanize)
+[![CI](https://img.shields.io/github/actions/workflow/status/biggora/pure-humanize/ci.yml?branch=master)](https://github.com/biggora/pure-humanize/actions)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 # pure-humanize
 
 Zero-dependency, cross-runtime TypeScript micro-library for formatting data into human-readable strings using native `Intl` APIs.
@@ -6,7 +10,7 @@ Zero-dependency, cross-runtime TypeScript micro-library for formatting data into
 ![dependencies](https://img.shields.io/badge/dependencies-0-brightgreen)
 ![license](https://img.shields.io/badge/license-MIT-green)
 ![typescript](https://img.shields.io/badge/TypeScript-5.5+-3178c6)
-
+npm trust github pure-humanize --repo biggora/pure-humanize --file publish.yml --env npm-publish --yes
 ## Features
 
 - **Intl-native** — delegates all locale logic to the runtime's built-in `Intl` APIs; no bundled locale data

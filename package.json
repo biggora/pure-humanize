@@ -66,6 +66,9 @@
   "files": [
     "dist"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "build": "tsup",
     "build:demo": "tsup src/index.ts --format iife --global-name pureHumanize --no-splitting --minify --out-dir docs --no-dts",
