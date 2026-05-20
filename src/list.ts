@@ -4,12 +4,12 @@
  * const opts: ListOptions = { locale: 'en-US', type: 'conjunction', style: 'long' };
  */
 export type ListOptions = {
-  /** BCP 47 locale(s). Defaults to the runtime default. */
-  locale?: string | string[];
-  /** List join style. `'conjunction'` → "and", `'disjunction'` → "or", `'unit'` → bare list. Defaults to `'conjunction'`. */
-  type?: 'conjunction' | 'disjunction' | 'unit';
-  /** Format style. Defaults to `'long'`. */
-  style?: 'long' | 'short' | 'narrow';
+    /** BCP 47 locale(s). Defaults to the runtime default. */
+    locale?: string | string[];
+    /** List join style. `'conjunction'` → "and", `'disjunction'` → "or", `'unit'` → bare list. Defaults to `'conjunction'`. */
+    type?: 'conjunction' | 'disjunction' | 'unit';
+    /** Format style. Defaults to `'long'`. */
+    style?: 'long' | 'short' | 'narrow';
 };
 
 /**
@@ -20,9 +20,9 @@ export type ListOptions = {
  * @example list([]) // ""
  */
 export function list(items: string[], options?: ListOptions): string {
-  if (items.length === 0) return '';
+    if (items.length === 0) return '';
 
-  const { locale, type = 'conjunction', style = 'long' } = options ?? {};
+    const {locale, type = 'conjunction', style = 'long'} = options ?? {};
 
-  return new Intl.ListFormat(locale, { type, style }).format(items);
+    return new Intl.ListFormat(locale, {type, style}).format(items);
 }

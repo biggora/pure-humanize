@@ -9,7 +9,7 @@ Zero-dependency, cross-runtime TypeScript micro-library for formatting data into
 ![dependencies](https://img.shields.io/badge/dependencies-0-brightgreen)
 ![license](https://img.shields.io/badge/license-MIT-green)
 ![typescript](https://img.shields.io/badge/TypeScript-5.5+-3178c6)
-npm trust github pure-humanize --repo biggora/pure-humanize --file publish.yml --env npm-publish --yes
+
 ## Features
 
 - **Intl-native** — delegates all locale logic to the runtime's built-in `Intl` APIs; no bundled locale data
