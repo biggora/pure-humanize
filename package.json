@@ -99,6 +99,6 @@
     "size-limit": "^11",
     "tsup": "^8",
     "typescript": "^5.5",
-    "vitest": "^2"
+    "vitest": "^4"
   }
 }
