@@ -126,6 +126,15 @@
     "node": ">=18"
   },
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/biggora/pure-humanize.git"
+  },
+  "bugs": {
+    "url": "https://github.com/biggora/pure-humanize/issues"
+  },
+  "homepage": "https://github.com/biggora/pure-humanize#readme",
+  "author": "Aleksejs Gordejevs",
   "keywords": [
     "humanize",
     "format",
