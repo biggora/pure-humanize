@@ -19,6 +19,10 @@ Zero-dependency, cross-runtime TypeScript micro-library for formatting data into
 - **Tiny** — entire bundle is under 2 KB; individual modules are a few hundred bytes each
 - **Fully typed** — every function and options object ships with TypeScript types
 
+## Demo
+
+[demo page](https://biggora.github.io/pure-humanize/?target=_blank)
+
 ## Install
 
 ```bash
