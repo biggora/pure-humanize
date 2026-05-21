@@ -1,3 +1,10 @@
+import {
+    LIST_TYPE,
+    LIST_STYLE,
+    type ListType,
+    type ListStyle,
+} from './constants/styles.js';
+
 /**
  * Options for the {@link list} function.
  * @example
@@ -7,9 +14,9 @@ export type ListOptions = {
     /** BCP 47 locale(s). Defaults to the runtime default. */
     locale?: string | string[];
     /** List join style. `'conjunction'` → "and", `'disjunction'` → "or", `'unit'` → bare list. Defaults to `'conjunction'`. */
-    type?: 'conjunction' | 'disjunction' | 'unit';
+    type?: ListType;
     /** Format style. Defaults to `'long'`. */
-    style?: 'long' | 'short' | 'narrow';
+    style?: ListStyle;
 };
 
 /**
@@ -22,7 +29,7 @@ export type ListOptions = {
 export function list(items: string[], options?: ListOptions): string {
     if (items.length === 0) return '';
 
-    const {locale, type = 'conjunction', style = 'long'} = options ?? {};
+    const {locale, type = LIST_TYPE.CONJUNCTION, style = LIST_STYLE.LONG} = options ?? {};
 
     return new Intl.ListFormat(locale, {type, style}).format(items);
 }

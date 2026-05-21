@@ -1,3 +1,11 @@
+import {
+    CURRENCY_DISPLAY,
+    NOTATION,
+    NUMBER_STYLE,
+    type CurrencyDisplay,
+    type TrailingZeroDisplay,
+} from './constants/styles.js';
+
 /**
  * Options for the {@link currency} function.
  * @example
@@ -7,7 +15,7 @@ export type CurrencyOptions = {
     /** BCP 47 locale(s). Defaults to the runtime default. */
     locale?: string | string[];
     /** How the currency is displayed. Defaults to `'symbol'`. */
-    currencyDisplay?: 'symbol' | 'narrowSymbol' | 'code' | 'name';
+    currencyDisplay?: CurrencyDisplay;
     /** Use compact notation, e.g. `"$1M"` instead of `"$1,000,000"`. Defaults to `false`. */
     compact?: boolean;
     /** Maximum fraction digits. When omitted, Intl uses the currency's default (e.g. 2 for USD, 0 for JPY). */
@@ -15,7 +23,7 @@ export type CurrencyOptions = {
     /** Minimum fraction digits. When omitted, Intl uses the currency's default. */
     minimumFractionDigits?: number;
     /** Whether to strip trailing zeros on integers. */
-    trailingZeroDisplay?: 'auto' | 'stripIfInteger';
+    trailingZeroDisplay?: TrailingZeroDisplay;
 };
 
 /**
@@ -30,7 +38,7 @@ export function currency(value: number, currencyCode: string, options?: Currency
 
     const {
         locale,
-        currencyDisplay = 'symbol',
+        currencyDisplay = CURRENCY_DISPLAY.SYMBOL,
         compact = false,
         maximumFractionDigits,
         minimumFractionDigits,
@@ -38,12 +46,12 @@ export function currency(value: number, currencyCode: string, options?: Currency
     } = options ?? {};
 
     const nfOptions: Intl.NumberFormatOptions = {
-        style: 'currency',
+        style: NUMBER_STYLE.CURRENCY,
         currency: currencyCode,
         currencyDisplay,
     };
 
-    if (compact) nfOptions.notation = 'compact';
+    if (compact) nfOptions.notation = NOTATION.COMPACT;
     if (maximumFractionDigits !== undefined) nfOptions.maximumFractionDigits = maximumFractionDigits;
     if (minimumFractionDigits !== undefined) nfOptions.minimumFractionDigits = minimumFractionDigits;
     if (trailingZeroDisplay !== undefined) (nfOptions as Record<string, unknown>)['trailingZeroDisplay'] = trailingZeroDisplay;

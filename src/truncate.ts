@@ -1,3 +1,5 @@
+import { TRUNCATE_POSITION, type TruncatePosition } from './constants/styles.js';
+
 /**
  * Options for the {@link truncate} function.
  * @example
@@ -7,7 +9,7 @@ export type TruncateOptions = {
   /** Truncation indicator. Defaults to `'...'` */
   ellipsis?: string;
   /** Where to truncate: `'end'` (default), `'middle'`, or `'start'`. */
-  position?: 'end' | 'middle' | 'start';
+  position?: TruncatePosition;
   /** Avoid cutting words in the middle. Only applies when `position` is `'end'`. Defaults to `false`. */
   wordBoundary?: boolean;
 };
@@ -21,7 +23,7 @@ export type TruncateOptions = {
  */
 export function truncate(str: string, length: number, options?: TruncateOptions): string {
   const ellipsis = options?.ellipsis ?? '...';
-  const position = options?.position ?? 'end';
+  const position = options?.position ?? TRUNCATE_POSITION.END;
 
   if (str.length <= length) return str;
 
@@ -29,11 +31,11 @@ export function truncate(str: string, length: number, options?: TruncateOptions)
 
   if (availableLength <= 0) return ellipsis.slice(0, length);
 
-  if (position === 'start') {
+  if (position === TRUNCATE_POSITION.START) {
     return ellipsis + str.slice(str.length - availableLength);
   }
 
-  if (position === 'middle') {
+  if (position === TRUNCATE_POSITION.MIDDLE) {
     const left = Math.ceil(availableLength / 2);
     const right = Math.floor(availableLength / 2);
     return str.slice(0, left) + ellipsis + str.slice(str.length - right);

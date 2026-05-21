@@ -1,3 +1,5 @@
+import { PLURAL_TYPE, type PluralType } from './constants/styles.js';
+
 /**
  * Plural form templates keyed by CLDR plural category.
  * `#` in any template is replaced by the locale-formatted count.
@@ -22,7 +24,7 @@ export type PluralForms = {
  */
 export type PluralOptions = {
   locale?: string | string[];
-  type?: 'cardinal' | 'ordinal';
+  type?: PluralType;
 };
 
 /**
@@ -33,7 +35,7 @@ export type PluralOptions = {
  * @example plural(0, { zero: 'no items', other: '# items' }) // "no items"
  */
 export function plural(count: number, forms: PluralForms, options?: PluralOptions): string {
-  const pr = new Intl.PluralRules(options?.locale, { type: options?.type ?? 'cardinal' });
+  const pr = new Intl.PluralRules(options?.locale, { type: options?.type ?? PLURAL_TYPE.CARDINAL });
   const category = pr.select(count);
   const template = forms[category as keyof PluralForms] ?? forms.other;
   const formattedCount = new Intl.NumberFormat(options?.locale).format(count);

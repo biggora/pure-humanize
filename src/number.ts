@@ -1,3 +1,9 @@
+import {
+  COMPACT_DISPLAY,
+  NOTATION,
+  type CompactDisplay,
+} from './constants/styles.js';
+
 /**
  * Options for the {@link number} function.
  * @example
@@ -7,7 +13,7 @@ export type NumberOptions = {
   /** BCP 47 locale(s). Defaults to the runtime default. */
   locale?: string | string[];
   /** `'short'` → `"1.2K"`, `'long'` → `"1.2 thousand"`. Defaults to `'short'`. */
-  compactDisplay?: 'short' | 'long';
+  compactDisplay?: CompactDisplay;
   /** Maximum fraction digits. Defaults to `1`. */
   maximumFractionDigits?: number;
   /** Minimum fraction digits. Defaults to `0`. */
@@ -28,14 +34,14 @@ export function number(value: number, options?: NumberOptions): string {
 
   const {
     locale,
-    compactDisplay = 'short',
+    compactDisplay = COMPACT_DISPLAY.SHORT,
     maximumFractionDigits = 1,
     minimumFractionDigits = 0,
     maximumSignificantDigits,
   } = options ?? {};
 
   const nfOptions: Intl.NumberFormatOptions = {
-    notation: 'compact',
+    notation: NOTATION.COMPACT,
     compactDisplay,
     maximumFractionDigits,
     minimumFractionDigits,

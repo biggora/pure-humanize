@@ -1,4 +1,5 @@
-const SUFFIXES: Record<string, string> = { one: 'st', two: 'nd', few: 'rd', other: 'th' };
+import { ORDINAL_SUFFIXES_EN } from './constants/units.js';
+import { PLURAL_TYPE } from './constants/styles.js';
 
 /**
  * Options for {@link ordinal}.
@@ -19,7 +20,7 @@ export type OrdinalOptions = {
  * @example ordinal(21) // "21st"
  */
 export function ordinal(n: number, options?: OrdinalOptions): string {
-  const pr = new Intl.PluralRules(options?.locale, { type: 'ordinal' });
+  const pr = new Intl.PluralRules(options?.locale, { type: PLURAL_TYPE.ORDINAL });
   const category = pr.select(n);
-  return new Intl.NumberFormat(options?.locale).format(n) + (SUFFIXES[category] ?? 'th');
+  return new Intl.NumberFormat(options?.locale).format(n) + (ORDINAL_SUFFIXES_EN[category] ?? 'th');
 }

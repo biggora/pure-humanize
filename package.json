@@ -58,6 +58,36 @@
       "import": "./dist/truncate.js",
       "require": "./dist/truncate.cjs",
       "default": "./dist/truncate.js"
+    },
+    "./constants": {
+      "types": "./dist/constants/index.d.ts",
+      "import": "./dist/constants/index.js",
+      "require": "./dist/constants/index.cjs",
+      "default": "./dist/constants/index.js"
+    },
+    "./constants/currencies": {
+      "types": "./dist/constants/currencies.d.ts",
+      "import": "./dist/constants/currencies.js",
+      "require": "./dist/constants/currencies.cjs",
+      "default": "./dist/constants/currencies.js"
+    },
+    "./constants/locales": {
+      "types": "./dist/constants/locales.d.ts",
+      "import": "./dist/constants/locales.js",
+      "require": "./dist/constants/locales.cjs",
+      "default": "./dist/constants/locales.js"
+    },
+    "./constants/styles": {
+      "types": "./dist/constants/styles.d.ts",
+      "import": "./dist/constants/styles.js",
+      "require": "./dist/constants/styles.cjs",
+      "default": "./dist/constants/styles.js"
+    },
+    "./constants/units": {
+      "types": "./dist/constants/units.d.ts",
+      "import": "./dist/constants/units.js",
+      "require": "./dist/constants/units.cjs",
+      "default": "./dist/constants/units.js"
     }
   },
   "main": "./dist/index.cjs",
@@ -82,6 +112,14 @@
     {
       "path": "dist/index.js",
       "limit": "2 KB"
+    },
+    {
+      "path": "dist/constants/index.js",
+      "limit": "2 KB"
+    },
+    {
+      "path": "dist/constants/currencies.js",
+      "limit": "1.5 KB"
     }
   ],
   "engines": {

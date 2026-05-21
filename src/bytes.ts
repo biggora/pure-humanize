@@ -1,5 +1,4 @@
-const BINARY_UNITS = ['B', 'KiB', 'MiB', 'GiB', 'TiB', 'PiB', 'EiB'] as const;
-const SI_UNITS = ['B', 'kB', 'MB', 'GB', 'TB', 'PB', 'EB'] as const;
+import {BINARY_BYTE_UNITS, SI_BYTE_UNIT, SI_BYTE_UNITS} from './constants/units.js';
 
 /**
  * Options for {@link bytes}.
@@ -29,11 +28,11 @@ export type BytesOptions = {
 export function bytes(value: number, options?: BytesOptions): string {
     if (!isFinite(value)) throw new TypeError(`bytes: value must be a finite number, got ${value}`);
 
-    if (value === 0) return '0 B';
+    if (value === 0) return `0 ${SI_BYTE_UNIT}`;
 
     const binary = options?.binary ?? true;
     const base = binary ? 1024 : 1000;
-    const units = binary ? BINARY_UNITS : SI_UNITS;
+    const units = binary ? BINARY_BYTE_UNITS : SI_BYTE_UNITS;
 
     const isNeg = value < 0;
     const absValue = Math.abs(value);
