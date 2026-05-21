@@ -1,5 +1,5 @@
 [![npm version](https://img.shields.io/npm/v/pure-humanize.svg)](https://www.npmjs.com/package/pure-humanize)
-[![CI](https://img.shields.io/github/actions/workflow/status/biggora/pure-humanize/ci.yml?branch=master)](https://github.com/biggora/pure-humanize/actions)
+[![CI](https://img.shields.io/github/actions/workflow/status/biggora/pure-humanize/ci.yml?branch=main)](https://github.com/biggora/pure-humanize/actions)
 
 # pure-humanize
 
